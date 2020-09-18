@@ -37,14 +37,23 @@ function getCompChoice()
     if( randomChoice == 0 )
     {
         compChoice = 'St';
+        setTimeout(function(){
+            computerSelected(stone);
+        },1010);
     }
     else if( randomChoice == 1)
     {
         compChoice = 'P';
+        setTimeout(function(){
+            computerSelected(paper);
+        },1010);
     }
     else
     {
         compChoice = 'Sc';
+        setTimeout(function(){
+            computerSelected(scissor);
+        },1010);
     }
 
     return compChoice;
@@ -112,10 +121,42 @@ function draw()
 
 stone.addEventListener('click', function(){
     playGame('stone');
+    userSelected(stone);
+    setTimeout(function(){
+        setDefault(stone);
+    },1000);
+
 });
 paper.addEventListener('click',function(){
     playGame('paper');
+    userSelected(paper);
+    setTimeout(function(){
+        setDefault(paper);
+    },1000);
 });
 scissor.addEventListener('click',function(){
     playGame('scissor');
+    userSelected(scissor);
+    
 });
+
+function userSelected(choice)
+{
+    choice.parentElement.style.backgroundColor = 'green';
+    setTimeout(function(){
+        setDefault(choice);
+    },1000);
+}
+
+function computerSelected(choice)
+{
+    choice.parentElement.style.backgroundColor = 'cyan';
+    setTimeout(function(){
+        setDefault(choice);
+    },1000);
+}
+
+function setDefault(choice)
+{
+    choice.parentElement.style.backgroundColor = 'black';
+}
