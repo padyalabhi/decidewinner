@@ -8,6 +8,9 @@ let stone = document.querySelector("#stone > img");
 let paper = document.querySelector("#paper > img");
 let scissor = document.querySelector("#scissor > img");
 
+let winning = document.querySelector('.win');
+let losing = document.querySelector('.lose');
+
 let result = document.querySelector(".result");
 
 function getUserChoice(choice)
@@ -94,6 +97,8 @@ function win()
     userScore++;
     userScoreBoard.innerText = userScore;
 
+    winning.play();
+
     result.innerText = 'You Win !!';
 
     userScoreBoard.classList.remove('lose');
@@ -106,6 +111,8 @@ function lose()
 {
     compScore++;
     compScoreBoard.innerText = compScore;
+
+    losing.play();
 
     result.innerText = 'You Lose !!';
     userScoreBoard.classList.add('lose');
